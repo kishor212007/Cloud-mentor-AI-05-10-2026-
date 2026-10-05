@@ -1,0 +1,222 @@
+export const awsServicesList = [
+  {
+    id: 'ec2',
+    name: 'Amazon EC2',
+    fullName: 'Elastic Compute Cloud',
+    category: 'Compute',
+    difficulty: 'Beginner',
+    freeTier: '750 hours/month of t2.micro or t3.micro for 12 months',
+    shortDefinition: 'Virtual servers in the cloud that you can configure, start, stop, and resize in minutes without buying hardware.',
+    tamilDefinition: 'Amazon EC2 என்பது கிளவுடில் வாடகைக்கு எடுக்கப்படும் விர்ச்சுவல் சர்வர்கள் ஆகும். இதில் உங்கள் இணையதளங்கள் மற்றும் செயலிகளை இயக்கலாம்.',
+    realWorldUseCase: 'Hosting a web application, e-commerce store (like Shopify backend), or running backend batch processing scripts.',
+    tamilUseCase: 'இணையதளங்கள் மற்றும் வணிகப் பயன்பாடுகளை 24 மணி நேரமும் தடையின்றி இயக்கப் பயன்படுகிறது.',
+    beginnerExample: 'You want to host a personal blog with Node.js and MongoDB. You launch an Ubuntu t2.micro EC2 instance, install Node.js, and host your blog online with a public IP.',
+    tamilExample: 'ஒரு புதிய இணையதளத்திற்கு உபுண்டு (Ubuntu) விர்ச்சுவல் சர்வரைத் தொடங்கி அதில் அப்ளிகேஷனை ஹோஸ்ட் செய்தல்.',
+    keyFeatures: [
+      'Resizable compute capacity with hundreds of instance types',
+      'Choose from Linux, Windows, macOS operating systems',
+      'Pay-as-you-go pricing by the second or minute',
+      'Secured by AWS Security Groups (virtual firewall rules)'
+    ],
+    cliExample: 'aws ec2 run-instances --image-id ami-0c55b159cbfafe1f0 --count 1 --instance-type t2.micro --key-name MyKeyPair',
+    recommendedNext: 's3'
+  },
+  {
+    id: 's3',
+    name: 'Amazon S3',
+    fullName: 'Simple Storage Service',
+    category: 'Storage',
+    difficulty: 'Beginner',
+    freeTier: '5 GB standard storage, 20,000 GET & 2,000 PUT requests for 12 months',
+    shortDefinition: 'An object storage service that offers industry-leading scalability, data availability, security, and performance.',
+    tamilDefinition: 'Amazon S3 என்பது கோப்புகள், படங்கள், வீடியோக்கள் மற்றும் பேக்கப்களைப் பாதுகாப்பாக சேமிக்க உதவும் அன்லிமிடெட் கிளவுட் ஸ்டோரேஜ் ஆகும்.',
+    realWorldUseCase: 'Storing user-uploaded profile photos on Instagram, hosting static portfolio websites, or storing enterprise database backups.',
+    tamilUseCase: 'மொபைல் ஆப் புகைப்படங்கள் மற்றும் வீடியோக்களை பாதுகாப்பாக சேமித்து வைக்கப் பயன்படுகிறது.',
+    beginnerExample: 'Upload your HTML, CSS, and JavaScript files into an S3 bucket named "my-student-portfolio-bucket" and turn on "Static Website Hosting" to share your website link worldwide.',
+    tamilExample: 'ஒரு ஸ்டாடிக் இணையதள கோப்புகளை (HTML/CSS) S3 பக்கெட்டில் பதிவேற்றி உடனே ஆன்லைனில் இலவசமாக ஹோஸ்ட் செய்யலாம்.',
+    keyFeatures: [
+      '99.999999999% (11 9s) of data durability',
+      'Lifecycle policies to automatically move old files to cheaper Glacier tier',
+      'Fine-grained access control with Bucket Policies & IAM',
+      'Version preservation with S3 Object Versioning'
+    ],
+    cliExample: 'aws s3 cp index.html s3://my-cloud-bucket/ --acl public-read',
+    recommendedNext: 'iam'
+  },
+  {
+    id: 'iam',
+    name: 'AWS IAM',
+    fullName: 'Identity and Access Management',
+    category: 'Security',
+    difficulty: 'Beginner',
+    freeTier: 'Always Free (Included at no additional charge with AWS)',
+    shortDefinition: 'Centrally manage permissions that control which AWS services and resources users, applications, and roles can access.',
+    tamilDefinition: 'AWS IAM என்பது உங்கள் கிளவுட் கணக்கில் யார் எந்த சேவைகளைப் பயன்படுத்தலாம் என்ற அனுமதியை நிர்வகிக்கும் பாதுகாப்பு அமைப்பாகும்.',
+    realWorldUseCase: 'Giving your web developers access to create EC2 instances, while restricting them from deleting database backups or seeing billing info.',
+    tamilUseCase: 'புதிய டெவலப்பர்களுக்கு தேவையான பணிகளுக்கு மட்டும் அனுமதி வழங்கி, கணக்கின் முக்கிய பகுதிகளை பாதுகாத்தல்.',
+    beginnerExample: 'You create an IAM user named "frontend-dev" and attach the "AmazonS3ReadOnlyAccess" policy so they can only read images, without modifying them.',
+    tamilExample: 'ஒரு பயனருக்கு S3 பக்கெட்டிலுள்ள படங்களைப் பார்க்க மட்டும் அனுமதி தந்து, அழிக்க முடியாதவாறு கட்டுப்படுத்துவது.',
+    keyFeatures: [
+      'Multi-Factor Authentication (MFA) enforcement',
+      'IAM Roles for granting temporary credentials to EC2 and Lambda',
+      'Granular JSON policy documents (Allow / Deny actions on specific ARN resources)',
+      'Zero cost—core security governance tool'
+    ],
+    cliExample: 'aws iam create-user --user-name DevUser1',
+    recommendedNext: 'vpc'
+  },
+  {
+    id: 'vpc',
+    name: 'Amazon VPC',
+    fullName: 'Virtual Private Cloud',
+    category: 'Networking',
+    difficulty: 'Intermediate',
+    freeTier: 'Always Free (Basic VPC, subnets, route tables, IGW are free; NAT Gateway charges apply)',
+    shortDefinition: 'A logically isolated virtual network dedicated to your AWS account, giving you complete control over IP ranges, subnets, and routing.',
+    tamilDefinition: 'Amazon VPC என்பது உங்கள் AWS கணக்கிற்குள் நீங்கள் அமைத்துக் கொள்ளும் பிரத்யேக தனிப்பட்ட விர்ச்சுவல் நெட்வொர்க் ஆகும்.',
+    realWorldUseCase: 'Building a banking web application where the customer website is in a public subnet, but customer account databases are locked in an isolated private subnet with no internet access.',
+    tamilUseCase: 'வங்கி பயன்பாடுகளில் வாடிக்கையாளர் தரவுத்தளங்களை வெளி இணைய தாக்குதலில் இருந்து முற்றிலும் தனிமைப்படுத்தப் பயன்படுகிறது.',
+    beginnerExample: 'Create a VPC with CIDR 10.0.0.0/16. Add a public subnet (10.0.1.0/24) connected to an Internet Gateway for web servers, and a private subnet (10.0.2.0/24) for private MySQL database.',
+    tamilExample: 'வெப்சைட் இயங்கும் சர்வர்களை பொது சப்நெட்டிலும், டேட்டாபேஸை பாதுகாப்பான தனி சப்நெட்டிலும் பிரித்து அமைத்தல்.',
+    keyFeatures: [
+      'Custom IPv4 and IPv6 CIDR block allocation',
+      'Internet Gateways (IGW) for bi-directional internet connectivity',
+      'NAT Gateways for private instances to safely download updates',
+      'Dual-layer security: Security Groups (stateful) + Network ACLs (stateless)'
+    ],
+    cliExample: 'aws ec2 create-vpc --cidr-block 10.0.0.0/16',
+    recommendedNext: 'rds'
+  },
+  {
+    id: 'rds',
+    name: 'Amazon RDS',
+    fullName: 'Relational Database Service',
+    category: 'Database',
+    difficulty: 'Intermediate',
+    freeTier: '750 hours/month of db.t2.micro / db.t3.micro (MySQL/PostgreSQL/MariaDB) + 20 GB storage for 12 months',
+    shortDefinition: 'A managed relational database service that simplifies setup, operation, and scaling of MySQL, PostgreSQL, MariaDB, Oracle, and SQL Server.',
+    tamilDefinition: 'Amazon RDS என்பது தானியங்கி பேக்கப் மற்றும் உயர் பாதுகாப்பு கொண்ட நிர்வகிக்கப்படும் ரிலேஷனல் டேட்டாபேஸ் சேவையாகும்.',
+    realWorldUseCase: 'Storing order transactions, customer records, and inventory data for an online shopping website like Amazon.in.',
+    tamilUseCase: 'ஆன்லைன் ஆர்டர்கள் மற்றும் பயனர் தகவல்களை அட்டவணை வடிவில் துல்லியமாக நிர்வகிக்க.',
+    beginnerExample: 'Instead of manually installing MySQL on an EC2 server, click 3 buttons in RDS to launch a fully managed MySQL database with automated daily snapshots.',
+    tamilExample: 'சர்வர் மென்பொருள் அப்டேட்கள் மற்றும் பேக்கப் பணிகளை RDS தானாகவே கவனித்துக் கொள்ளும்.',
+    keyFeatures: [
+      'Multi-AZ synchronous replication for automatic disaster recovery in under 60 seconds',
+      'Read Replicas to scale out read-heavy SQL queries',
+      'Automated OS patching, hardware provisioning, and automated backups',
+      'High-performance Amazon Aurora engine compatibility'
+    ],
+    cliExample: 'aws rds create-db-instance --db-instance-identifier mydb --db-instance-class db.t3.micro --engine mysql',
+    recommendedNext: 'lambda'
+  },
+  {
+    id: 'lambda',
+    name: 'AWS Lambda',
+    fullName: 'Serverless Compute Service',
+    category: 'Compute',
+    difficulty: 'Intermediate',
+    freeTier: '1,000,000 free requests per month and 3.2 million seconds of compute time ALWAYS FREE',
+    shortDefinition: 'A serverless, event-driven compute service that lets you run code for virtually any type of application without provisioning servers.',
+    tamilDefinition: 'AWS Lambda என்பது சர்வர்கள் எதையும் நிர்வகிக்காமல் உங்கள் நிரல்களை (Code) இயக்கும் சர்வர்லெஸ் சேவையாகும். இயங்கும் மில்லி விநாடிகளுக்கு மட்டுமே கட்டணம்.',
+    realWorldUseCase: 'Automatically resizing user profile photos to 150x150 thumbnail size the instant they are uploaded to an S3 bucket.',
+    tamilUseCase: 'பயனர் புதிய புகைப்படத்தை அப்லோட் செய்தவுடன் அதை தானாகவே சிறிய அளவாக மாற்றி அனுப்பும் நிகழ்வு.',
+    beginnerExample: 'Write a 10-line Python script that sends a Slack message whenever a new user registers. Lambda runs only for 200 milliseconds, costing practically $0.0000002.',
+    tamilExample: 'ஒரு சிறிய பைதான் கோடை எழுதி, தேவைப்படும் போது மட்டும் இயக்கி பயன்பாட்டு நேரத்திற்கு மட்டும் செலவு செய்தல்.',
+    keyFeatures: [
+      'Zero server maintenance or OS updates required',
+      'Automatic scaling from zero to thousands of concurrent executions in seconds',
+      'Supports Node.js, Python, Java, Go, Ruby, C#, and custom runtimes',
+      'Pay only for computed millisecond execution time'
+    ],
+    cliExample: 'aws lambda create-function --function-name MyHandler --runtime python3.11 --role arn:aws:iam::123:role/service-role',
+    recommendedNext: 'dynamodb'
+  },
+  {
+    id: 'dynamodb',
+    name: 'Amazon DynamoDB',
+    fullName: 'Fast NoSQL Database',
+    category: 'Database',
+    difficulty: 'Intermediate',
+    freeTier: '25 GB storage + 25 provisioned Write and Read Capacity Units ALWAYS FREE',
+    shortDefinition: 'A fully managed NoSQL key-value and document database delivering single-digit millisecond latency at any scale.',
+    tamilDefinition: 'Amazon DynamoDB என்பது மிக வேகமான NoSQL டேட்டாபேஸ் ஆகும். இது மில்லி விநாடிகளில் மில்லியன் கணக்கான கோரிக்கைகளைக் கையாளும்.',
+    realWorldUseCase: 'Mobile gaming leaderboards, real-time IoT sensor telemetry data, and user shopping cart sessions.',
+    tamilUseCase: 'ஆன்லைன் கேமிங் ஸ்கோர் போர்டு மற்றும் மொபைல் ஆப் டேட்டா சேமிப்புக்கு ஏற்றது.',
+    beginnerExample: 'Store user shopping carts with key "userId" and value JSON items. Even if 1 million users add items simultaneously on Black Friday, DynamoDB responds in 5 milliseconds.',
+    tamilExample: 'ஷாப்பிங் கார்ட் மற்றும் உடனடி மெசேஜ் தகவல்களை நெகிழ்வான JSON வடிவில் சேமித்தல்.',
+    keyFeatures: [
+      'Single-digit millisecond response times',
+      'Serverless with on-demand capacity auto-scaling',
+      'Built-in TTL (Time-To-Live) for automatically expiring temporary sessions',
+      'Continuous automated backups and global tables for multi-region replication'
+    ],
+    cliExample: 'aws dynamodb create-table --table-name Users --attribute-definitions AttributeName=UserId,AttributeType=S --key-schema AttributeName=UserId,KeyType=HASH',
+    recommendedNext: 'cloudfront'
+  },
+  {
+    id: 'cloudfront',
+    name: 'Amazon CloudFront',
+    fullName: 'Content Delivery Network (CDN)',
+    category: 'Networking',
+    difficulty: 'Intermediate',
+    freeTier: '1 TB of data transfer out + 10,000,000 HTTP/HTTPS requests each month ALWAYS FREE',
+    shortDefinition: 'A fast content delivery network (CDN) that securely delivers data, videos, applications, and APIs to users globally with low latency.',
+    tamilDefinition: 'Amazon CloudFront என்பது உலகம் முழுவதும் உள்ள பயனர்களுக்கு இணையதளத்தை அதிவேகமாக டெலிவரி செய்யும் CDN நெட்வொர்க் ஆகும்.',
+    realWorldUseCase: 'Streaming video on Netflix or delivering static images on Airbnb so users in India, London, and Tokyo all load pages instantly without lag.',
+    tamilUseCase: 'வெளிநாட்டு பயனர்களும் உங்கள் தளத்தை உள்ளூர் சர்வர் போல மின்னல் வேகத்தில் பார்க்க இது உதவுகிறது.',
+    beginnerExample: 'Attach CloudFront in front of your S3 static website. When a student in Chennai opens your website, the images load from the Chennai edge location cache instead of fetching all the way from US East.',
+    tamilExample: 'அமெரிக்காவில் இருக்கும் சர்வர் கோப்புகளை உள்ளூர் கேச் (Cache) மூலம் இந்திய பயனர்களுக்கு வேகமாக வழங்குதல்.',
+    keyFeatures: [
+      '600+ Points of Presence (Edge Locations) across 100+ cities globally',
+      'Free SSL/TLS certificates via AWS Certificate Manager (ACM)',
+      'Built-in DDoS mitigation integrated with AWS Shield',
+      'Origin Shield for reducing origin server load'
+    ],
+    cliExample: 'aws cloudfront create-distribution --origin-domain-name mybucket.s3.amazonaws.com',
+    recommendedNext: 'cloudwatch'
+  },
+  {
+    id: 'cloudwatch',
+    name: 'Amazon CloudWatch',
+    fullName: 'Observability & Monitoring',
+    category: 'Management',
+    difficulty: 'Beginner',
+    freeTier: '10 custom metrics & alarms, 5 GB log ingestion and 3 dashboards ALWAYS FREE',
+    shortDefinition: 'A monitoring and observability service that provides data and actionable insights for AWS, hybrid, and on-premises applications.',
+    tamilDefinition: 'Amazon CloudWatch என்பது உங்கள் கிளவுட் சர்வர்கள் மற்றும் பயன்பாடுகளின் செயல்திறனை நேரலையில் கண்காணிக்கும் அமைப்பாகும்.',
+    realWorldUseCase: 'Monitoring your production website: if server CPU crosses 85% for 3 minutes, CloudWatch automatically sends an SMS to the on-call engineer and triggers Auto Scaling.',
+    tamilUseCase: 'சர்வரில் ஏதேனும் பழுது ஏற்பட்டால் உடனடியாக நிர்வாகிகளுக்கு மின்னஞ்சல் அல்லது மெசேஜ் எச்சரிக்கை அனுப்பும்.',
+    beginnerExample: 'Set a free billing alarm in CloudWatch to alert your email if your monthly AWS account bill exceeds $5.00, keeping your learning 100% budget safe!',
+    tamilExample: 'AWS பில் $5 டாலருக்கு மேல் சென்றால் உடனே மின்னஞ்சல் எச்சரிக்கை வருமாறு அலாரம் அமைத்தல்.',
+    keyFeatures: [
+      'Real-time dashboards for metrics like CPU, RAM, disk, and request counts',
+      'Centralized CloudWatch Logs with search and filter queries',
+      'Automated alarms linked with SNS notifications and EC2 auto-recovery',
+      'EventBridge integration for scheduled cron jobs'
+    ],
+    cliExample: 'aws cloudwatch put-metric-alarm --alarm-name HighCPU --metric-name CPUUtilization --namespace AWS/EC2 --threshold 80',
+    recommendedNext: 'route53'
+  },
+  {
+    id: 'route53',
+    name: 'Amazon Route 53',
+    fullName: 'Highly Available Scalable DNS',
+    category: 'Networking',
+    difficulty: 'Beginner',
+    freeTier: '$0.50 per hosted zone/month (first 25 zones); 0.40 per 1M standard queries',
+    shortDefinition: 'A highly available and scalable cloud Domain Name System (DNS) web service designed to route end users to internet applications.',
+    tamilDefinition: 'Amazon Route 53 என்பது ஒரு சிறந்த கிளவுட் DNS சேவையாகும். இது டொமைன் பெயர்களை (எ.கா. google.com) IP முகவரியாக மாற்றுகிறது.',
+    realWorldUseCase: 'Registering your custom domain name (e.g., www.mycloudschool.com) and smartly routing user traffic across healthy servers in Mumbai and Singapore.',
+    tamilUseCase: 'டொமைன் பெயர்களை வாங்குவதற்கும், பயனர்களை சரியான சர்வருக்கு வழிநடத்துவதற்கும் பயன்படுகிறது.',
+    beginnerExample: 'Connect your custom domain name "vishal-cloud.com" to your CloudFront distribution using an Alias (A) record.',
+    tamilExample: 'உங்கள் சொந்த டொமைன் பெயரை கிளவுட் இணையதளத்துடன் எளிதாக இணைப்பது.',
+    keyFeatures: [
+      '100% SLA availability commitment backed by anycast network',
+      'Advanced routing policies: Latency-based, Geolocation, Failover, Weighted',
+      'DNS Health Checks: Automatically reroutes traffic away from downed servers',
+      'Direct Alias records to AWS resources at zero DNS query cost'
+    ],
+    cliExample: 'aws route53 list-hosted-zones',
+    recommendedNext: 'ec2'
+  }
+];
